@@ -1,0 +1,47 @@
+assumptions
+  - magento in root dir
+  - build for max optimization
+
+app state
+  - migrating existing app
+  - optionally use Boxfile.install for new install
+
+sniff to detect framework
+  - if file exists: app/Mage.php
+
+prepare
+  env vars
+    - $MAG_INSTALL_DATE = date -u
+
+build
+  move .htaccess files into place
+  ensure dev mode and display errors is turned off in index.php
+  create config file
+    read in template
+    $CRYPT_KEY = echo $APP_NAME | md5
+    replace with value of env vars
+      '{crypt_key}',
+      '{install_date}',
+      '{db1_host}',
+      '{db1_name}',
+      '{db1_user}',
+      '{db1_pass}',
+      '{app_name}',
+      '{cachehost1}',
+      '{cacheport1}',
+      '{cachehost2}',
+      '{cacheport2}'
+
+      $CRYPT_KEY,
+      $_SERVER['INSTALL_DATE'],
+      $_SERVER['DB1_HOST'],
+      $_SERVER['DB1_NAME'],
+      $_SERVER['DB1_USER'],
+      $_SERVER['DB1_PASS'],
+      $_SERVER['APP_NAME'],
+      $_SERVER['CACHE1_HOST'],
+      $_SERVER['CACHE1_PORT'],
+      $_SERVER['CACHE2_PORT'],
+      $_SERVER['CACHE2_PORT'],
+
+create Boxfile

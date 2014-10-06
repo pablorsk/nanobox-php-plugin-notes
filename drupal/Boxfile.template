@@ -1,0 +1,27 @@
+web1:
+  name: drupal-web
+  network_dirs:
+    storage1:
+      - sites/default/files
+  php_extensions:
+    - mysqli
+    - gd
+    - hash
+    - json
+    - xml
+    - pdo
+    - pdo_mysql
+    - mcrypt
+    - mbstring
+
+db1:
+  name: drupal-db
+  type: mysql
+
+cache1:
+  name: drupal-cache
+  type: memcached
+
+storage1:
+  name: drupal-writables
+  type: nfs

@@ -1,0 +1,79 @@
+web1:
+  name: mag-front
+  type: php
+  version: 5.4
+  network_dirs:
+    storage1:
+      - media
+      - var/cache
+      - var/log
+      - var/report
+      - var/session
+      - var/backups
+  php_extensions:
+    - pdo_mysql
+    - mysql
+    - simplexml
+    - mcrypt
+    - hash
+    - gd
+    - dom
+    - iconv
+    - curl
+    - soap
+    - eaccelerator
+    - redis
+    - gzip
+  after_build:
+    - "mv pagoda/root.htaccess .htaccess"
+    - "mv pagoda/index.php ."
+  before_deploy:
+    - "cp pagoda/media.htaccess media/.htaccess"
+    - "cp pagoda/var.htaccess var/.htaccess"
+
+web2:
+  name: mag-admin
+  type: php
+  version: 5.4
+  network_dirs:
+    storage1:
+      - media
+      - var/cache
+      - var/log
+      - var/report
+      - var/session
+  php_extensions:
+    - pdo_mysql
+    - mysql
+    - simplexml
+    - mcrypt
+    - hash
+    - gd
+    - dom
+    - iconv
+    - curl
+    - soap
+    - eaccelerator
+    - redis
+    - gzip
+  after_build:
+    - "mv pagoda/root.htaccess .htaccess"
+    - "mv pagoda/index.php ."
+  before_deploy:
+    - "cp pagoda/media.htaccess media/.htaccess"
+    - "cp pagoda/var.htaccess var/.htaccess"
+  php_max_execution_time: 30
+  php_upload_max_filesize: "5M"
+
+db1:
+  name: mag-db
+  type: mysql
+cache1:
+  name: mag-cache
+  type: redis
+cache2:
+  name: mag-session
+  type: redis
+storage1:
+  type: nfs
+  name: mag-file-storage

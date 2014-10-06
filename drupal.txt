@@ -1,0 +1,18 @@
+assumptions
+  - drupal in root dir
+  - build for max optimization
+
+app state
+  - migrating existing app
+  - optionally use Boxfile.install for new install
+
+sniff to detect framework
+  - look for DRUPAL_ROOT in index.php
+
+prepare
+
+build
+  download memcache module and install at sites/all/modules (http://ftp.drupal.org/files/projects/memcache-7.x-1.2.tar.gz)
+  create config file from template
+
+create Boxfile

@@ -1,0 +1,13 @@
+web1: 
+  name: wp-web 
+  network_dirs:
+    storage1:
+      - wp-content/uploads/
+
+db1:
+  name: wp-db
+  type: mysql
+
+storage1:
+  type: nfs
+  name: mag-file-storage
