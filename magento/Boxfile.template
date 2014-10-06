@@ -68,12 +68,15 @@ web2:
 db1:
   name: mag-db
   type: mysql
+
 cache1:
   name: mag-cache
   type: redis
+
 cache2:
   name: mag-session
   type: redis
+  
 storage1:
   type: nfs
   name: mag-file-storage
